@@ -1,0 +1,28 @@
+{
+	"node": "n8n-nodes-ycloud",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Communication", "Marketing"],
+	"subcategories": {
+		"Communication": ["Messaging"],
+		"Marketing": ["WhatsApp"]
+	},
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://docs.ycloud.com/guide/credentials"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://docs.ycloud.com/reference/whatsapp_message-send-directly"
+			},
+			{
+				"url": "https://docs.ycloud.com/reference/whatsapp_message-send"
+			},
+			{
+				"url": "https://docs.ycloud.com/reference/whatsapp_message-retrieve"
+			}
+		]
+	}
+}

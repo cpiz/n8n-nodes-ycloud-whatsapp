@@ -1,0 +1,64 @@
+{
+	"name": "@cpiz/n8n-nodes-ycloud-whatsapp",
+	"version": "0.1.7",
+	"description": "自定义的n8n节点，用于操作YCloud的WhatsApp API（中文）",
+	"license": "MIT",
+	"homepage": "",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"ycloud",
+		"whatsapp"
+	],
+	"author": {
+		"name": "cpiz"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/cpiz/n8n-nodes-ycloud-whatsapp-chs.git"
+	},
+	"engines": {
+		"node": ">=18.10"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease"
+	},
+	"main": "index.js",
+	"files": [
+		"dist",
+		"index.js"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": false,
+		"credentials": [
+			"dist/credentials/YCloudApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/YCloud/YCloud.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "^0.17.0",
+		"@types/node": "^22.13.1",
+		"eslint": "^9.39.2",
+		"prettier": "^3.6.2",
+		"release-it": "^19.0.4",
+		"typescript": "^5.9.2"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	},
+	"volta": {
+		"node": "22.21.1"
+	}
+}
