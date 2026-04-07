@@ -1,4 +1,3 @@
-// eslint-disable-next-line n8n-nodes-base/node-filename-against-convention
 /* eslint-disable n8n-nodes-base/node-param-operation-option-action-miscased */
 import type {
 	IExecuteFunctions,
@@ -363,6 +362,7 @@ export class YCloud implements INodeType {
 				},
 				required: true,
 				default: '',
+				// eslint-disable-next-line n8n-nodes-base/node-param-placeholder-miscased-id
 				placeholder:
 					'{\n  "type": "button",\n  "body": {\n    "text": "请选择一个选项"\n  },\n  "action": {\n    "buttons": [\n      {\n        "type": "reply",\n        "reply": {\n          "id": "yes",\n          "title": "是"\n        }\n      }\n    ]\n  }\n}',
 				description: '直接填写请求体中 interactive 字段对应的 JSON 内容',
