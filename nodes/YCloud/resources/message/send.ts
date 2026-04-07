@@ -132,24 +132,24 @@ export async function sendMessage(
 			break;
 		}
 		case 'interactive': {
-			const interactiveType = ctx.getNodeParameter('interactiveType', itemIndex, 'button') as string;
-			const interactiveBody = ctx.getNodeParameter('interactiveBody', itemIndex, '') as string;
-			const interactiveFooter = ctx.getNodeParameter('interactiveFooter', itemIndex, '') as string;
+			const interactiveContentStr = ctx.getNodeParameter('interactiveContent', itemIndex, '') as string;
+			let interactiveContent: IDataObject;
 
-			const interactiveContent: IDataObject = { type: interactiveType, body: { text: interactiveBody } };
-			if (interactiveFooter) {
-				interactiveContent.footer = { text: interactiveFooter };
-			}
+			try {
+				const parsedInteractiveContent = JSON.parse(interactiveContentStr);
 
-			if (interactiveType === 'button') {
-				const header = ctx.getNodeParameter('interactiveHeader', itemIndex, '') as string;
-				const buttonsStr = ctx.getNodeParameter('interactiveButtons', itemIndex, '[]') as string;
-				const buttons = JSON.parse(buttonsStr);
-
-				if (header) {
-					interactiveContent.header = { type: 'text', text: header };
+				if (
+					!parsedInteractiveContent ||
+					Array.isArray(parsedInteractiveContent) ||
+					typeof parsedInteractiveContent !== 'object'
+				) {
+					throw new Error('interactive 字段必须是一个 JSON 对象');
 				}
-				interactiveContent.action = { buttons };
+
+				interactiveContent = parsedInteractiveContent as IDataObject;
+			} catch (error) {
+				const detail = error instanceof Error ? error.message : String(error);
+				throw new Error(`Interactive JSON 格式无效: ${detail}`);
 			}
 
 			body.interactive = interactiveContent;

@@ -355,81 +355,21 @@ export class YCloud implements INodeType {
 			},
 			// Interactive 消息字段
 			{
-				displayName: '互动类型',
-				name: 'interactiveType',
-				type: 'options',
-				options: [
-					{ name: '按钮', value: 'button' },
-					{ name: '列表', value: 'list' },
-					{ name: '产品', value: 'product' },
-					{ name: '目录产品', value: 'catalog_message' },
-				],
-				default: 'button',
-				displayOptions: {
-					show: {
-						resource: ['message'],
-						messageType: ['interactive'],
-					},
-				},
-			},
-			{
-				displayName: '头部',
-				name: 'interactiveHeader',
-				type: 'string',
-				default: '',
-				description: '互动消息的头部文本',
-				displayOptions: {
-					show: {
-						resource: ['message'],
-						messageType: ['interactive'],
-						interactiveType: ['button'],
-					},
-				},
-			},
-			{
-				displayName: '正文',
-				name: 'interactiveBody',
+				displayName: 'Interactive (JSON)',
+				name: 'interactiveContent',
 				type: 'string',
 				typeOptions: {
-					rows: 3,
+					rows: 10,
 				},
+				required: true,
 				default: '',
-				description: '互动消息的正文内容',
+				placeholder:
+					'{\n  "type": "button",\n  "body": {\n    "text": "请选择一个选项"\n  },\n  "action": {\n    "buttons": [\n      {\n        "type": "reply",\n        "reply": {\n          "id": "yes",\n          "title": "是"\n        }\n      }\n    ]\n  }\n}',
+				description: '直接填写请求体中 interactive 字段对应的 JSON 内容',
 				displayOptions: {
 					show: {
 						resource: ['message'],
 						messageType: ['interactive'],
-					},
-				},
-			},
-			{
-				displayName: '底部',
-				name: 'interactiveFooter',
-				type: 'string',
-				default: '',
-				description: '互动消息的底部文本',
-				displayOptions: {
-					show: {
-						resource: ['message'],
-						messageType: ['interactive'],
-					},
-				},
-			},
-			{
-				displayName: '按钮 (JSON)',
-				name: 'interactiveButtons',
-				type: 'string',
-				typeOptions: {
-					rows: 5,
-				},
-				default: '[]',
-				placeholder: '[{"type": "reply", "title": "是"}, {"type": "reply", "title": "否"}]',
-				description: '按钮数组（JSON 格式）',
-				displayOptions: {
-					show: {
-						resource: ['message'],
-						messageType: ['interactive'],
-						interactiveType: ['button'],
 					},
 				},
 			},
