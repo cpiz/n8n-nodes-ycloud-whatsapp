@@ -1,6 +1,6 @@
 {
 	"name": "@cpiz/n8n-nodes-ycloud-whatsapp",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "自定义的n8n节点，用于操作YCloud的WhatsApp API（中文）",
 	"license": "MIT",
 	"homepage": "",
